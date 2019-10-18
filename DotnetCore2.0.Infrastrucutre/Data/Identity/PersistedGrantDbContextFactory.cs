@@ -15,10 +15,7 @@ namespace DotnetCore2.Infrastrucutre.Data.Identity
         public PersistedGrantDbContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<PersistedGrantDbContext>();
-            //"Default": "Data Source=./;User ID=sa;Password=01032015;Initial Catalog=VBIncApp;"
-            //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=AuthServer;Trusted_Connection=True;MultipleActiveResultSets=true",
-            //    sql => sql.MigrationsAssembly(typeof(PersistedGrantDbContextFactory).GetTypeInfo().Assembly.GetName().Name));
-            string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+             string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
             var builder = new ConfigurationBuilder()
                 .SetBasePath(new DirectoryInfo(Environment.CurrentDirectory).FullName)//System.AppDomain.CurrentDomain.BaseDirectory)
@@ -33,10 +30,7 @@ namespace DotnetCore2.Infrastrucutre.Data.Identity
               sql => sql.MigrationsAssembly(typeof(PersistedGrantDbContextFactory).GetTypeInfo().Assembly.GetName().Name));
             return new PersistedGrantDbContext(optionsBuilder.Options, new OperationalStoreOptions());
 
-            //optionsBuilder.UseSqlServer("Data Source=40.113.139.61;User ID=sa;Password=01032015@gun;Initial Catalog=VBIncApps;",
-            ////optionsBuilder.UseSqlServer("Data Source=./;User ID=sa;Password=01032015;Initial Catalog=VBIncApps;",
-            //   sql => sql.MigrationsAssembly(typeof(PersistedGrantDbContextFactory).GetTypeInfo().Assembly.GetName().Name));
-            //return new PersistedGrantDbContext(optionsBuilder.Options, new OperationalStoreOptions());
+            
         }
 
         
